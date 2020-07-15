@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'knopy',         
   packages = ['knopy'],   
-  version = '0.0',      
+  version = '0.0.0',      
   license='MIT',       
   description = 'A scientific calculation library for Python',   
   author = 'Kubilay AYTEMIZ',                   
   author_email = 'meneskaytemiz@hotmail.com',      
   url = 'https://github.com/Kobemeka/knopy',   
-  download_url = 'https://github.com/Kobemeka/knopy/archive/v0.0.tar.gz',    
+  download_url = 'https://github.com/Kobemeka/knopy/archive/v0.0.0.tar.gz',    
   keywords = ['Science','Math','Physics','Chemistry','Calculation', 'Simulation'],   
   install_requires=[            
           'numpy',
