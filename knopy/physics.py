@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-import constants
+import cn
 import space
 import veop 
 import units
@@ -51,7 +51,7 @@ def GravitationalForce(FirstObject,SecondObject):
     SecondObject: Object
         Second object
     """
-    gF = constants.G.Value * FirstObject.Mass * SecondObject.Mass / (DistanceB2Object(FirstObject,SecondObject).magnitude)**2
+    gF = cn.G.Value * FirstObject.Mass * SecondObject.Mass / (DistanceB2Object(FirstObject,SecondObject).magnitude)**2
 
     vector = veop.List2Vector(gF * DistanceB2Object(SecondObject,FirstObject).unitVector().numpy_array)
 
@@ -93,7 +93,7 @@ def CoulombsLaw(charge1,charge2):
     charge2: Charge
         Second Charge
     """
-    F = constants.k.Value * charge1.charge * charge2.charge / veop.RelativeVector(charge1.position,charge2.position).magnitude**2
+    F = cn.k.Value * charge1.charge * charge2.charge / veop.RelativeVector(charge1.position,charge2.position).magnitude**2
     vector = veop.List2Vector(F * veop.RelativeVector(charge2.position,charge1.position).unitVector().numpy_array)
     return vector
 def EField(charge,point):
@@ -106,7 +106,7 @@ def EField(charge,point):
     point: Vector
         Point in a 3-D space to calculate electric field
     """
-    E = constants.k.Value * charge.charge / veop.RelativeVector(charge.position,point).magnitude**2
+    E = cn.k.Value * charge.charge / veop.RelativeVector(charge.position,point).magnitude**2
     vector = veop.List2Vector(E*veop.RelativeVector(point,charge.position).unitVector().numpy_array)
     return vector
 def DipoleMoment(NegativeCharge,PositiveCharge):
@@ -123,7 +123,7 @@ def DipoleMoment(NegativeCharge,PositiveCharge):
     """
     return veop.List2Vector(PositiveCharge.charge * veop.RelativeVector(PositiveCharge.position,NegativeCharge.position).numpy_array)
 #def DipoleMomentEField(DipoleMoment,Point):
-    #return constants.k.Value * -1 * DipoleMoment.numpy_array / RelativeVector(Point,DipoleMoment.position).magnitude**3
+    #return cn.k.Value * -1 * DipoleMoment.numpy_array / RelativeVector(Point,DipoleMoment.position).magnitude**3
 def DipoleMomentTorque(DipoleMoment,EField):
     """Calculates components of torque of an dipole in an electric field and return a vector.
 
@@ -160,7 +160,7 @@ def EPotential(Charge,Point):
     Point: Vector
         Point in a 3-D space
     """
-    return constants.k.Value * Charge.charge / veop.RelativeVector(Charge.position,Point).magnitude
+    return cn.k.Value * Charge.charge / veop.RelativeVector(Charge.position,Point).magnitude
 def EPotential2Charge(Charge1,Charge2):
     """Calculate potential energy that created by two charges
 
@@ -173,7 +173,7 @@ def EPotential2Charge(Charge1,Charge2):
     Charge2: Charge
         Second charge
     """
-    return constants.k.Value * Charge1.charge * Charge2.charge/ veop.RelativeVector(Charge1.position,Charge2.position).magnitude
+    return cn.k.Value * Charge1.charge * Charge2.charge/ veop.RelativeVector(Charge1.position,Charge2.position).magnitude
 def CParallel(capacitor1,capacitor2):
     """Connect two capacitor in parallel
 

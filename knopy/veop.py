@@ -1,7 +1,8 @@
-import physics as pp
 import numpy as np
 import math 
 
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 class Vector:
     """Create a Vector
 
@@ -36,7 +37,7 @@ class Vector:
         return np.array([self.x,self.y,self.z])
     def unitVector(self):
         """A Vector. Return unit vector of the vector."""
-        return veop.List2Vector(self.numpy_array/self.magnitude)
+        return List2Vector(self.numpy_array/self.magnitude)
     def sum_(self):
         return sum(self.components)
     def multip(self):
